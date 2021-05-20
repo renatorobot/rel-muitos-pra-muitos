@@ -13,7 +13,7 @@ class CreateAlocacaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('alocacaoes', function (Blueprint $table) {
+        Schema::create('alocacoes', function (Blueprint $table) {
             $table->bigInteger('desenvolvedor_id')->unsigned();
             $table->foreign('desenvolvedor_id')->references('id')->on('desenvolvedores');
             $table->bigInteger('projeto_id')->unsigned();
@@ -31,6 +31,6 @@ class CreateAlocacaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alocacaoes');
+        Schema::dropIfExists('alocacoes');
     }
 }
