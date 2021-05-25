@@ -41,3 +41,37 @@ Route::get('/desenvolvedor-projetos', function () {
    // return $desenvolvedores->toJson();
 
 });
+
+Route::get('/projetos-desenvolvedores', function () {
+
+    $projetos = Projeto::with('desenvolvedores')->get();
+    return $projetos->toJson();
+
+
+});
+
+
+Route::get('/alocar', function () {
+
+    $proj = Projeto::find(4);
+    if(isset($proj)){
+        //$proj->desenvolvedores()->attach(1, ['horas_semanais'=>50]);
+        $proj->desenvolvedores()->attach([
+            2 => ['horas_semanais' => 20],
+            3 => ['horas_semanais' => 30]
+        ]);
+    }
+
+
+});
+
+Route::get('/desalocar', function () {
+
+    $proj = Projeto::find(4);
+    if(isset($proj)){
+        //$proj->desenvolvedores()->attach(1, ['horas_semanais'=>50]);
+        $proj->desenvolvedores()->detach([1,2,3]);
+    }
+
+
+});
